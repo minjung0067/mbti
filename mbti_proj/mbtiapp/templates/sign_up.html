@@ -1,0 +1,29 @@
+{% load static %}
+{% include "partials/head_meta.html" %}
+{% include "partials/logo.html" %}
+
+
+<div class="container">
+    <div class="signin_box p-3 align-items-center ">
+        <div class="row p-2 mb-5">
+            <h3>당신은 누구신가요?</h1>
+        </div>
+        <div class="row p-2 m-1 ">
+            <label class="col-3 m-1"> 학교 </label>
+            <input class="col-8 round_input_box m-1">
+        </div>
+        <div class="row p-2 m-1">
+            <label class="col-3 m-1"> 학과 </label>
+            <input class="col-8 round_input_box m-1">
+        </div>
+        <div class="row p-2 m-1">
+            <label class="col-3 m-1"> 별명 </label>
+            <input class="col-8 round_input_box m-1">
+        </div>
+    </div>
+</div>
+
+<button style="position: absolute; top: 80%;" onclick=location.href='{% url 'sign_mbti' %}'>다음</button>
+
+</body>
+</html>

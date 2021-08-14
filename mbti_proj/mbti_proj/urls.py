@@ -22,5 +22,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mbtiapp.views.index, name='index'),
-
+    path('main/', mbtiapp.views.main, name='main'),
+    path('select_school/', mbtiapp.views.select_school, name='select_school'),
+    path('my_school_main/', mbtiapp.views.my_school_main, name='my_school_main'),
+    path('sign_up/', mbtiapp.views.sign_up, name='sign_up'),
+    path('result/', mbtiapp.views.result, name='result'),
+    path('about_mbti/', mbtiapp.views.about_mbti, name='about_mbti'),
+    path('sign_mbti/', mbtiapp.views.sign_mbti, name='sign_mbti'),
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
