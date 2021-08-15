@@ -14,6 +14,7 @@ def my_school_main(request):
     return render(request, 'my_school_main.html')
 
 def sign_up(request):
+    
     return render(request, 'sign_up.html')
 
 def sign_mbti(request):

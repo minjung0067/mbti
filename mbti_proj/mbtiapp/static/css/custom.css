@@ -37,7 +37,7 @@ button{
 	font-size: 16px;
 	border:none;
 	border-radius: 20px;
-	box-shadow: 0 4px 16pxrgba(114,202,191,0.3);;
+	box-shadow: 0 4px 16px rgba(114,202,191,0.3);
 	transition:0.3s;
 	position: absolute;
 	left:50%;
@@ -70,22 +70,29 @@ button:hover{
 }
 
 .round_input_box{
-    height: 50%;
     padding: 2px;
 	color:black;
 	background: white;
-	font-size: 16px;
+	font-size: 15px;
 	border: 1px black;
 	border-radius: 20px;
-	box-shadow: 0 2px 8px rgba(3, 40, 121, 0.233);
+	box-shadow: 0 2px 8px rgba(104, 68, 143, 0.131);
 }
 
 .btn{
 	color:#fff;
-	background: rgba(146,119,162);
+	background: rgba(180,118,248);
 	font-size: 16px;
 	border:none;
 	border-radius: 20px;
 	box-shadow: 0 4px 16px rgba(27, 26, 28, 0.3);
 	transition:0.3s;
+}
+
+.purple_bg{
+	background: white;
+	border: 1px black;
+	border-radius: 80px;
+	box-shadow: 0 2px 8px rgba(104, 68, 143, 0.124);
+
 }

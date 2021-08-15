@@ -1,24 +1,29 @@
 {% include "partials/head_meta.html" %}
-{% include "partials/logo.html" %}
+<body class="text-center" style=" background-color: rgba(206, 206, 206, 0.288); ">
+    <a href="{% url 'index' %}" >로고 들어갈 자리</a>    
 
-<div class="container">
-    <div class="signin_box">
-        <div class="row p-2 mb-5">
-            <h3>당신의 MBTI는?</h1>
-        </div>
-        <div class="row">
-            <div class="col-2 m-2">
-                <div class="row">
-                    <p>INTJ</p>
-                    <img src="static/img/mbti.png">
-                </div>
+<div class="container-fluid" style="position: absolute; top: 10%;">
+    <div class="container justify-content-center purple_bg">
+        <div class=" p-3 align-items-center mt-5 p-4">
+            <div class="row p-2 mt-3 mb-3 fs-5">
+                <h3 class = "GmarketSansBold">당신의 MBTI는?</h1>
             </div>
-           
+            <div class="row">
+                <div class="col-2 m-2">
+                    <div class="row">
+                        <p style="font-size: 0.5em;">INTJ</p>
+                        <img src="static/img/mbti.png">
+                    </div>
+                </div>
+               
+            </div>
+            
+            
         </div>
+        <input class="btn"  type="submit"  onclick=location.href='{% url 'result' %}' value="결과 보기">
     </div>
 </div>
 
-<button style="position: absolute; top: 80%;" onclick=location.href="{% url 'result' %}">결과 보기</button>
 
 </body>
 </html>

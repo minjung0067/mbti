@@ -228,13 +228,13 @@ sup {
   top: -0.5em;
 }
 
-a {
+/* a {
   color: #0d6efd;
   text-decoration: underline;
 }
 a:hover {
   color: #0a58ca;
-}
+} */
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
   color: inherit;
@@ -7551,6 +7551,19 @@ textarea.form-control-lg {
 .fs-6 {
   font-size: 1rem !important;
 }
+.fs-7 {
+  font-size: 0.75rem !important;
+}
+.fs-8 {
+  font-size: 0.5rem !important;
+}
+.fs-9 {
+  font-size: 0.25rem !important;
+}
+.fs-10 {
+  font-size: 0.1rem !important;
+}
+
 
 .fst-italic {
   font-style: italic !important;
@@ -11174,6 +11187,18 @@ textarea.form-control-lg {
 
   .fs-4 {
     font-size: 1.5rem !important;
+  }
+  .fs-5 {
+    font-size: 1.25rem !important;
+  }
+  .fs-6 {
+    font-size: 1rem !important;
+  }
+  .fs-7 {
+    font-size: 0.75rem !important;
+  }
+  .fs-8 {
+    font-size: 0.5rem !important;
   }
 }
 @media print {
