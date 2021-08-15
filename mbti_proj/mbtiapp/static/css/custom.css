@@ -120,6 +120,7 @@ button:hover{
 
 .mbti{
 	font-size: 0.8em;
+	font-weight: bold;
 }
 .mbti_discrip{
 	font-size: 0.8em;
@@ -151,4 +152,9 @@ button:hover{
 	padding-right: 0;
 	padding-bottom: 0;
 	padding-top:0;
+}
+.logo{
+	margin-top: 8%;
+	width: 7%;
+	height: auto;
 }
