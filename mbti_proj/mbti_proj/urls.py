@@ -29,4 +29,5 @@ urlpatterns = [
     path('result/', mbtiapp.views.result, name='result'),
     path('about_mbti/', mbtiapp.views.about_mbti, name='about_mbti'),
     path('sign_mbti/', mbtiapp.views.sign_mbti, name='sign_mbti'),
+    path('create_user/', mbtiapp.views.create_user, name='create_user'),
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

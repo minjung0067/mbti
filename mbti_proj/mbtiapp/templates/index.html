@@ -7,7 +7,14 @@
     <p class="mt-1 p-1 fs-6" style="color: rgb(170, 170, 170);"> 우리 학교에서 가장 많은 MBTI는?</p>
 </div>
 
-<button style="position: absolute; top: 80%;" onclick=location.href="{% url 'select_school' %}">Start</button>
+<div class="container main_img">
+    <img width="100%" src="{% static '/img/everyone.png' %}">   
+</div>  
+
+<button style="position: absolute; bottom:25%; box-shadow: 0 2px 8px lightgray;" onclick=location.href="{% url 'select_school' %}">Start</button>
+
+
+
 
 </body>
 </html>

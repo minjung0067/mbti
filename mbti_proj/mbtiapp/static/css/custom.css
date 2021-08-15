@@ -22,6 +22,9 @@
 } */
 body{
 	font-family: 'GmarketSansMedium';
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 .GmarketSansBold{
 	font-family: 'GmarketSansBold';
@@ -31,17 +34,17 @@ body{
 }
 button{
 	width: 35%;
-	height: 5%;
+	height: 1.7rem;
 	color:#fff;
 	background: rgba(114,202,191);
-	font-size: 16px;
+	font-size: 0.8rem;
 	border:none;
 	border-radius: 20px;
 	box-shadow: 0 4px 16px rgba(114,202,191,0.3);
 	transition:0.3s;
 	position: absolute;
 	left:50%;
-	top:50%;
+	bottom: 20px;
 	transform: translate(-50%,-50%);
 }
 button:focus {
@@ -52,7 +55,13 @@ button:hover{
 	cursor: pointer;
 	box-shadow: 0 2px 4px rgba(114,202,191,0.6);;
 }
-
+input{
+	padding: 1rem;
+	outline-style: none;  /* 포커스시 발생하는 효과 제거를 원한다면 */
+	-webkit-appearance: none;  /* 브라우저별 기본 스타일링 제거 */
+	-moz-appearance: none;
+	appearance: none;
+}
 .signin_box{
     width:75%;
 	height: 60%;
@@ -73,11 +82,11 @@ button:hover{
     padding: 2px;
 	color:black;
 	background: white;
-	font-size: 2em;
+	font-size: 0.7em;
 	border: 1px black;
 	border-radius: 20px;
 	box-shadow: 0 2px 8px rgba(104, 68, 143, 0.131);
-	height: 2em;
+	height: 2.5rem;
 }
 
 .rank_box{
@@ -93,9 +102,10 @@ button:hover{
 }
 
 .btn{
+	height:1.7rem;
 	color:#fff;
 	background: rgba(180,118,248);
-	font-size: 16px;
+	font-size: 0.6rem;
 	border:none;
 	border-radius: 20px;
 	box-shadow: 0 4px 16px rgba(27, 26, 28, 0.3);
@@ -123,7 +133,6 @@ button:hover{
 	height: 5%;
 	color:#fff;
 	background: rgba(114,202,191);
-	font-size: 16px;
 	border:none;
 	border-radius: 20px;
 	box-shadow: 0 4px 16px rgba(114,202,191,0.3);
@@ -173,4 +182,18 @@ button:hover{
 	margin-top: 20%;
 	width: 1.5em;
 	height: auto;
+}
+
+.main_img{
+	position:relative;
+	height: 50%;
+	width: auto;
+}
+.input_box{
+	position: absolute;
+	top: 50%;
+	bottom: 50%;
+	width: 100%;
+	margin: auto;
+	padding: 5%;
 }

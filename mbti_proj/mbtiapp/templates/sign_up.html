@@ -11,18 +11,30 @@
                 <div class="row p-2 mt-3 mb-3 fs-5">
                     <h3 class = "GmarketSansBold purple_color">당신은 누구신가요?</h1>
                 </div>
-                <form action="" method="get" class="form-example">
+                <form action="{% url 'create_user' %}" method="get" class="form-example">
                     <div class="mt-5 row">
                         <h1 for="school" class="col-3 fs-6 mt-3">학교</h1>
-                        <input type="text" class="mt-2 round_input_box col-8 fs-6" name="school" id="school" required>
+                        <!-- <input type="text" class="mt-2 round_input_box col-8 fs-6 p-2" name="school" id="school" required> -->
+                        <select class="mt-2 round_input_box col-8 fs-6 p-2" id="school" name="school" required>
+                            {% for school_obj in school_list %}
+                                <option value="{{school.id}}">{{school_obj.school}}</option>
+                            {% endfor %}
+                        </select>
+                        <label class="mt-2" style="font-size: xx-small; color: rgba(180,118,248,0.7);" > ex) 한양대학교 에리카캠퍼스</label>
                     </div>
                     <div class="mt-4 row">
                         <h1 for="major" class="col-3 fs-6 mt-3">학과</h1>
-                        <input type="text" class="mt-2 round_input_box col-8 fs-6 fs-6" name="major" id="major" required>
+                        <!-- <input type="text" class="mt-2 round_input_box col-8 fs-6 fs-6 p-2" name="major" id="major" required> -->
+                        <select class="mt-2 round_input_box col-8 fs-6 fs-6 p-2" id="major" name="major" required>
+                            {% for major_obj in major_list %}
+                                <option value="{{school.id}}">{{major_obj.major}}</option>
+                            {% endfor %}
+                        </select>
+                        <label class="mt-2" style="font-size: xx-small; color: rgba(180,118,248,0.7);" > ex) ICT융합학부</label>
                     </div>
                     <div class="mt-4 mb-2 row">
                         <h1 for="name" class="col-3 fs-6 mt-3">별명</h1>
-                        <input type="text" class="mt-2 round_input_box col-8 fs-6 " name="name" id="name" required>
+                        <input type="text" class="mt-2 round_input_box col-8 fs-6 p-2" name="name" id="name" required>
                     </div>
                     <label style="font-size: xx-small; color: rgba(180,118,248,0.7);" > 별명은 중복 불가능하니, 개성 있게 입력해주세요</label>
                     <div  class=" mt-5 mb-2">
