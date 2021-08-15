@@ -96,3 +96,59 @@ button:hover{
 	box-shadow: 0 2px 8px rgba(104, 68, 143, 0.124);
 
 }
+
+.purple-color{
+	color: rgba(180,118,248);
+	/* text-decoration: none; */
+}
+
+.button_white{
+	width: 45%;
+	height: 5%;
+	color:#fff;
+	background: rgba(114,202,191);
+	font-size: 16px;
+	border:none;
+	border-radius: 20px;
+	box-shadow: 0 4px 16px rgba(114,202,191,0.3);
+	transition:0.3s;
+	position: absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+}
+
+.mbti{
+	font-size: 0.8em;
+}
+.mbti_discrip{
+	font-size: 0.8em;
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 1em;
+	padding-bottom: 0;
+}
+.mbti_discrip_sm{
+	font-size: 0.7em;
+	margin-left: 0;
+	margin-top: 0.8em;
+	margin-bottom: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-top:0;
+}
+.mbti_discrip_2{
+	font-size: 0.7em;
+	margin-left: 0;
+	margin-top: 0.1em;
+	margin-bottom: 0.5em;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-top:0;
+}

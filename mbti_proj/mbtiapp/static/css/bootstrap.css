@@ -4442,6 +4442,7 @@ textarea.form-control-lg {
 }
 
 .card {
+  padding: 0.1em;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -4450,7 +4451,7 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 1.2em;
 }
 .card > hr {
   margin-right: 0;
@@ -4502,10 +4503,11 @@ textarea.form-control-lg {
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 1.2em 1.2em 0em 0em;
 }
-.card-header:first-child {
+/* .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
-}
+} */
 
 .card-footer {
   padding: 0.5rem 1rem;
