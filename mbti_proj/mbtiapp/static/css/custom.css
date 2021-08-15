@@ -73,10 +73,23 @@ button:hover{
     padding: 2px;
 	color:black;
 	background: white;
-	font-size: 15px;
+	font-size: 2em;
 	border: 1px black;
 	border-radius: 20px;
 	box-shadow: 0 2px 8px rgba(104, 68, 143, 0.131);
+	height: 2em;
+}
+
+.rank_box{
+	padding: 3px;
+	margin: 0.5em;
+	color:black;
+	background: white; 
+	font-size: 1.7em;
+	border: 1px black;
+	border-radius: 20px;
+	box-shadow: 0 0.3px 1px 1px rgba(29, 19, 41, 0.178);
+	height: 1.2em;
 }
 
 .btn{
@@ -100,6 +113,9 @@ button:hover{
 .purple-color{
 	color: rgba(180,118,248);
 	/* text-decoration: none; */
+}
+.mint-color{
+	color: rgba(114,202,191);
 }
 
 .button_white{
