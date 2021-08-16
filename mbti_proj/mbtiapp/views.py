@@ -20,7 +20,7 @@ def select_school(request):
     return render(request, 'select_school.html' ,context)
 
 def my_school_main(request, data):
-    # 계산하는 부분
+    # 계산하는 부분 
     return render(request, 'my_school_main.html', data)
 
 def sign_up(request):
@@ -47,7 +47,6 @@ def search_user(request):
 def create_user(request):
     if request.method == 'POST': 
         school = request.POST['school']
-        major = request.POST['major']
         users = User.objects.filter(major = major)
         data = { 
             'school': school,
