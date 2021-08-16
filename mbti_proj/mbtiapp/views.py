@@ -19,8 +19,9 @@ def select_school(request):
     }
     return render(request, 'select_school.html' ,context)
 
-def my_school_main(request):
-    return render(request, 'my_school_main.html')
+def my_school_main(request, data):
+    # 계산하는 부분
+    return render(request, 'my_school_main.html', data)
 
 def sign_up(request):
     school_list = School.objects.all()
@@ -43,5 +44,22 @@ def about_mbti(request):
 def search_user(request):
     return redirect
 
-def create_user():
-    return redirect
+def create_user(request):
+    if request.method == 'POST': 
+        school = request.POST['school']
+        major = request.POST['major']
+        users = User.objects.filter(major = major)
+        data = { 
+            'school': school,
+            'major' : major,
+            'users' : users
+        }
+        return my_school_main(request, data)
+    else:
+        school_list = School.objects.all()
+        major_list = Major.objects.all()
+        context = {
+            'school_list' : school_list,
+            'major_list' : major_list,
+        }
+        return render(request, 'select_school.html', context)

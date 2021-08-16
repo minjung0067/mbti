@@ -6,15 +6,16 @@
     <h2 class="mt-3 p-3 GmarketSansBold fs-1"> 우리 학교 찾기</h2>
     <p class="mt-1 p-1 fs-7" style="color: rgb(170, 170, 170);">학교와 전공을 입력해보세요 !</p>
 
-    <div  class=" input_box">
-        <form action="{% url 'create_user' %}" method="POST" enctype="multipart/form-data" class="mt-5 form-example">
+    <div  class="p-3">
+        <form action="{% url 'create_user' %}" method="POST" enctype="multipart/form-data" class=" form-example">
+            {% csrf_token %}
             <div class= " p-2">
-                <div class="mt-3 row p-2">
-                    <h1 for="school" style="margin-top: 1rem;" class=" float-start fs-6">학교</h1>
-                    <!-- <input type="text" class="mt-2 round_input_box fs-7 p-2" name="school" id="school" required> -->
+                <div class=" row p-2">
+                    <h1 for="school" style="margin-top: 0.5rem;" class=" float-start fs-6">학교</h1>
                     <select class="form-control mt-2 round_input_box p-2" id="school" name="school" required>
+                        <option value="" hidden>학교를 선택해주세요</option>
                         {% for school_obj in school_list %}
-                            <option value="{{school.id}}">{{school_obj.school}}</option>
+                            <option value="{{school.school}}">{{school_obj.school}}</option>
                         {% endfor %}
                     </select>
                     <label class="mt-3 mint-color" style="font-size: xx-small;;" > ex) 한양대학교 에리카캠퍼스</label>
@@ -22,8 +23,9 @@
                 <div class="mt-2 row p-2">
                     <h1 for="major" class=" fs-6 mt-3">학과</h1>
                     <select class="form-control mt-2 round_input_box p-2" id="major" name="major" required>
+                        <option value="" hidden>학과를 선택해주세요</option>
                         {% for major_obj in major_list %}
-                            <option value="{{school.id}}">{{major_obj.major}}</option>
+                            <option value="{{major_obj.id}}">{{major_obj.major}}</option>
                         {% endfor %}
                     </select>
                     <label class="mt-3 mint-color" style="font-size: xx-small;;" >ex) ICT융합학부</label>
@@ -36,7 +38,7 @@
 
 
 
-<button type="submit" style="margin-top: 1rem; position: fixed; top: auto; bottom: 6rem;" onclick=location.href='{% url 'my_school_main' %}'>결과 보러가기</button>
+<button type="submit" style=" margin-top: 4rem; bottom:30px;" >결과 보러가기</button>
 </form>
 </body>
 </html>

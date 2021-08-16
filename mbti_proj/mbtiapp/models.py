@@ -6,7 +6,8 @@ class User(models.Model):
     major =  models.ForeignKey('Major', on_delete = models.CASCADE)           
     name =  models.CharField(max_length=20)
     mbti = models.ForeignKey('MBTI', on_delete = models.CASCADE)
-
+    name =  models.CharField(max_length=20)
+    grade = models.IntegerField(max_length=3, null=True)
     def __str__(self):
         return self.name
 
