@@ -18,7 +18,7 @@
                         <select class="mt-2 round_input_box col-8 fs-7 p-2" id="school" name="school" required>
                             <option value="" hidden>학교를 선택해주세요</option>
                             {% for school_obj in school_list %}
-                                <option value="{{school_obj.school_id}}">{{school_obj.school_name}}</option>
+                                <option value="{{school_obj.school_id}}">{{school_obj.school}}</option>
                             {% endfor %}
                         </select>
                         <label class="mt-2" style="font-size: xx-small; color: rgba(180,118,248,0.7);" >학교를 선택해주세요</label>

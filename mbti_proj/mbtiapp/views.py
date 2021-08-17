@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import User, MBTI, School, Major
+from .models import User, MBTI, School
 import json
 import os #FileNotFoundError: [Errno 2] No such file or directory: './static/json/schoolinfo.json'
+from django.db.models import Count
 
 # Create your views here.
 def index(request):
@@ -77,10 +78,14 @@ def create_user(request):
         school_id = request.POST['school']
         school_obj = School.objects.get(school_id = school_id)
         users = User.objects.filter(school_id = school_id)
+        mbti_count = User.objects.values('mbti').annotate(num_mbti=Count('mbti')).order_by('num_mbti')
+        
         data = { 
             'school_obj':school_obj,
             'users' : users,
+            'mbti_count' : mbti_count
         }
+
         return render(request, 'my_school_main.html', data)
     else:
         school_list = School.objects.all()
