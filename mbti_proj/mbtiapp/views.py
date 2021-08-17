@@ -47,16 +47,21 @@ def sign_up(request):
     }
     return render(request, 'sign_up.html',context)
 
-def sign_mbti(request, data):
+def sign_mbti(request):
     if request.method == 'POST': 
-        school = request.POST['mbti']
         school_id = data['school']
-        user_name = data['user']
-        data = { 
-            'school': school,
-            'users' : users
-        }    
-    return render(request, 'sign_mbti.html')
+        user_name = data['name']
+        grade = data['grade']
+        context = {
+            'school_id' : school_id,
+            'user_name' : user_name,
+            'grade': grade,
+        }
+        # user_obj = User(school_id = school_id, school_name=full_name)
+        # school_obj.save()
+        return render(request, 'sign_mbti.html', context)
+    else: 
+        return render(request, 'sign_mbti.html')
 
 def result(request):
     return render(request, 'result.html')
@@ -69,11 +74,12 @@ def search_user(request):
 
 def create_user(request):
     if request.method == 'POST': 
-        school = request.POST['school']
-        users = User.objects.filter(school = school)
+        school_id = request.POST['school']
+        school_obj = School.objects.get(school_id = school_id)
+        users = User.objects.filter(school_id = school_id)
         data = { 
-            'school': school,
-            'users' : users
+            'school_obj':school_obj,
+            'users' : users,
         }
         return render(request, 'my_school_main.html', data)
     else:
