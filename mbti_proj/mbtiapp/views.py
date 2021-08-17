@@ -10,12 +10,14 @@ def index(request):
     mbti_list = ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP","ISFP", "INFP", "INTP", "ESTP","ESFP", "ENFP", "ENTP", "ESTJ","ESFJ","ENFJ","ENTJ"]
 
 
-    for j in range(16):
-        mbti = mbti_list[j]
-        mbti_id = str(j)
-        mbti_obj = MBTI(mbti_id = mbti_id , mbti = mbti)
-        mbti_obj.save()    
+    # for j in range(16):
+    #     mbti = mbti_list[j]
+    #     mbti_id = str(j)
+    #     mbti_obj = MBTI(mbti_id = mbti_id , mbti = mbti)
+    #     mbti_obj.save()   
+
     full_name = ""
+
     module_dir = os.path.dirname(__file__)  # get current directory
     file_path = os.path.join(module_dir, 'schoolinfo.json')
     with open(file_path, 'rt', encoding='UTF8') as json_file:

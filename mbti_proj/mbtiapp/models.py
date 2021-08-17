@@ -11,7 +11,7 @@ class User(models.Model):
         return self.name
 
 class MBTI(models.Model):
-    mbti_id = models.BigAutoField(help_text="mbti ID", primary_key=True)
+    mbti_id = models.BigAutoField(help_text="mbti ID", primary_key=True,default = 1, null=False)
     mbti =  models.CharField(max_length=10)
 
     def __str__(self):
