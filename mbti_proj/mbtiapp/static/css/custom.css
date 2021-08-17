@@ -134,6 +134,10 @@ input{
 	color: rgba(180,118,248);
 	/* text-decoration: none; */
 }
+.purple-background{
+	background-color: rgba(180,118,248) !important;
+	color: white !important;
+}
 .mint-color{
 	color: rgba(114,202,191);
 }
@@ -206,4 +210,7 @@ input{
 	width: 100%;
 	margin: auto;
 	padding: 5%;
+}
+.hidden{
+	display: none !important;
 }

@@ -5,13 +5,14 @@
     <!-- <a href="{% url 'index' %}" ><img class="logo" src="{% static '/img/schoolcolor.PNG' %}"></a>     -->
             
 
-    <div class="container"  style="position: relative; top: 6%; bottom:80%;">
+    <div class="container " id="first_container" style="position: relative; top: 6%; bottom:80%;">
         <div class="container justify-content-center purple_bg">
             <div class=" p-3 align-items-center mt-5 p-4">
                 <div class="row p-2 mt-3 mb-3 fs-5">
                     <h3 class = "GmarketSansBold purple_color">당신은 누구신가요?</h1>
                 </div>
-                <form action="{% url 'sign_mbti' %}" method="get" class="form-example">
+                <form action="{% url 'result' %}" method="POST" class="form-example" id="user_form">
+                    {% csrf_token %}
                     <div class="mt-5 row">
                         <h1 for="school" class="col-3 fs-6 mt-3">학교</h1>
                         <!-- <input type="text" class="mt-2 round_input_box col-8 fs-6 p-2" name="school" id="school" required> -->
@@ -42,14 +43,13 @@
                         <h1 for="name" class="col-3 fs-6 mt-3">별명</h1>
                         <input type="text" class="mt-2 round_input_box col-8 fs-7 p-2" name="name" id="name" required>
                     </div>
-                    <label style="font-size: xx-small; color: rgba(180,118,248,0.7);" > 별명은 중복 불가능하니, 개성 있게 입력해주세요</label>
+                    <label style="font-size: xx-small; color: rgba(180,118,248,0.7);" > 별명은 개성 있게 입력해주세요 :)  </label>
                     <div  class=" m-1 mb-4">
                         <h1 hidden>2</h1>
                     </div>
                     <div  class=" mt-5 mb-3 p-2">
-                        <button type="submit" class="my_button fs-7" style="">다음</a>
+                        <button class="my_button fs-7" onclick="show_mbti()">다음</a>
                     </div>
-                </form>
                 
                 
             </div>
@@ -57,5 +57,188 @@
     </div>
 
 
+    <div class=" hidden " id="second_container" style="position: relative; top: 6%; bottom:80%;">
+        <div class="container justify-content-center purple_bg mb-2" style="height: 500px;">
+            <div class=" p-3 align-items-center mt-5 p-3 " style="height: 70%;">
+                <div class="row p-2 mt-3 mb-3 fs-5">
+                    <h3 class = "GmarketSansBold purple-color">당신의 MBTI는?</h1>
+                </div>
+                <div class="row mbti_box">
+                    <div class="col-3 ">
+                        <div class="row card" id="1" onclick="card_click(1)">
+                            <p class="card-header mbti">ISTJ</p>
+                            <p class="mbti_discrip_sm">세상의 </p>
+                            <p class="mbti_discrip_2">소금형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"  id="2" onclick="card_click(2)">
+                            <p class="card-header mbti" >ISFJ</p>
+                            <p class="mbti_discrip_sm">임금 뒤 </p>
+                            <p class="mbti_discrip_2">권력형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"  id="3" onclick="card_click(3)">
+                            <p class="card-header mbti" >INFJ</p>
+                            <p class="mbti_discrip">예언자형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"  id="4" onclick="card_click(4)">
+                            <p class="card-header mbti" >INTJ</p>
+                            <p class="mbti_discrip">과학자형</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mbti_box">
+                    <div class="col-3 ">
+                        <div class="row card "  id="5" onclick="card_click(5)">
+                            <p class="card-header mbti" >ISTP</p>
+                            <p class=" mbti_discrip">백과사전형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"  id="6" onclick="card_click(6)">
+                            <p class="card-header mbti" >ISFP</p>
+                            <p class="mbti_discrip">성인군자형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"   id="7" onclick="card_click(7)">
+                            <p class="card-header mbti">INFP</p>
+                            <p class="mbti_discrip">잔다르크형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"  id="8" onclick="card_click(8)">
+                            <p class="card-header mbti" >INTP</p>
+                            <p class="mbti_discrip_sm">아이디어 </p>
+                            <p class="mbti_discrip_2">뱅크형</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mbti_box">
+                    <div class="col-3 ">
+                        <div class="row card"  id="9" onclick="card_click(9)">
+                            <p class="card-header mbti" >ESTP</p>
+                            <p class="mbti_discrip_sm">수완좋은 </p>
+                            <p class="mbti_discrip_2">활동가형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card" id="10" onclick="card_click(10)">
+                            <p class="card-header mbti"  >ESFP</p>
+                            <p class="mbti_discrip_sm">사교적인 </p>
+                            <p class="mbti_discrip_2">유형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"  id="11" onclick="card_click(11)">
+                            <p class="card-header mbti">ENFP</p>
+                            <p class="mbti_discrip">스파크형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"  id="12" onclick="card_click(12)">
+                            <p class="card-header mbti" >ENTP</p>
+                            <p class="mbti_discrip">발명가형</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mbti_box">
+                    <div class="col-3 ">
+                        <div class="row card"  id="13" onclick="card_click(13)">
+                            <p class="card-header mbti" >ESTJ</p>
+                            <p class="mbti_discrip">사업가형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"  id="14" onclick="card_click(14)">
+                            <p class="card-header mbti" >ESFJ</p>
+                            <p class="mbti_discrip">친선도모형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"   id="15" onclick="card_click(15)">
+                            <p class="card-header mbti">ENFJ</p>
+                            <p class="mbti_discrip">언변능숙형</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row card"  id="16" onclick="card_click(16)">
+                            <p class="card-header mbti" >ENTJ</p>
+                            <p class="mbti_discrip">지도자형</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mbti_box"></div>
+                
+                <button class=" mt-5 mb-2 p-2 purple-background" type="submit" onclick="submit_form()" ><input id="mbti_input" type="text" class="p-0" name="mbti" id="mbti" required hidden>결과 보기</button>    
+            </div>
+        </form>
+
+        </div>
+        <a class="p-3 fs-6 purple-color" type="submit" href='{% url 'about_mbti' %}' > mbti가 무엇인가요?</a>
+    </div>
+
 </body>
+
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript"> 
+
+
+    function show_mbti() {
+        var user_form = document.getElementById('user_form');
+        var container1 = document.getElementById('first_container');
+        var container2 = document.getElementById('second_container');
+
+        if(user_form.school.value == ""){
+            user_form.school.focus();
+        }
+        else if(user_form.grade.value == ""){
+            user_form.grade.focus();
+        }
+        else if(user_form.name.value == ""){
+            user_form.name.focus();
+        }
+        else{
+            container1.classList.add('hidden');
+            container2.classList.remove('hidden');            
+        }
+    }
+
+    var clicked = 0;
+
+
+    function card_click(card_num) {
+        var user_form = document.getElementById('user_form');
+        var card_num = document.getElementById(card_num);
+        var mbti_input = document.getElementById(mbti_input);
+        if (card_num.classList[2] === "clicked") {
+            card_num.classList.remove("clicked");
+        } else {
+            for (var i = 1; i < 17; i++) {
+                document.getElementById(i).classList.remove("clicked");
+            }
+
+            card_num.classList.add("clicked");
+            clicked = card_num;
+            user_form.mbti.value = clicked;
+        }
+    }
+
+    function submit_form(){
+        var user_form = document.getElementById('user_form');
+        if(user_form.mbti.value == ""){
+            alert("MBTI를 선택해야 결과를 볼 수 있어요");
+        }
+        else{
+            location.href='{% url 'result' %}';
+        }
+    }
+
+
+</script>
+
 </html>
