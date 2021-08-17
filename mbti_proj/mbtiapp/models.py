@@ -17,7 +17,8 @@ class MBTI(models.Model):
         return self.mbti
 
 class School(models.Model):
-    school = models.CharField(max_length=20)
+    school_id = models.PositiveIntegerField(primary_key=True,  db_column='school_id')
+    school_name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.school
