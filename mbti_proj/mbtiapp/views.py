@@ -1,8 +1,23 @@
 from django.shortcuts import render, redirect
 from .models import User, MBTI, School, Major
+import json
 
 # Create your views here.
 def index(request):
+    data = []
+
+    with open('/static/json/schoolinfo.json', 'rt', encoding='UTF8') as json_file:
+        json_data = json.load(json_file)
+
+        # key가 SCHOOL_NM 문자열 가져오기
+        for i in range(433):
+            school_name = json_data['dataSearch']['content'][i]['schoolName']
+            data.append(school_name)
+
+    for item in data:
+        school_obj = School(school=item)
+        school_obj.save()
+
     return render(request, 'index.html')
 
 def main(request):

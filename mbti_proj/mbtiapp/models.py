@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
-    school_major =  models.ForeignKey('School_Major', on_delete = models.CASCADE,null=True, default=0)        
+    school =  models.ForeignKey('School', on_delete = models.CASCADE,null=True, default=0)        
     name =  models.CharField(max_length=20)
     mbti = models.ForeignKey('MBTI', on_delete = models.CASCADE)
     name =  models.CharField(max_length=20)
