@@ -33,8 +33,10 @@ body{
 	font-family: 'GmarketSansLight';
 }
 button{
-	width: 35%;
-	height: 1.7rem;
+	width: auto;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	height: 2rem;
 	color:#fff;
 	background: rgba(114,202,191);
 	font-size: 0.8rem;
@@ -44,7 +46,6 @@ button{
 	transition:0.3s;
 	position: absolute;
 	left:50%;
-	bottom: 20px;
 	transform: translate(-50%,-50%);
 }
 button:focus {
@@ -102,7 +103,7 @@ input{
 }
 
 .my_button{
-	height:1.5rem;
+	height:2rem;
 	background: rgba(180,118,248);
 	font-size: 0.6rem;
 	border-radius: 20px;
@@ -138,7 +139,7 @@ input{
 }
 
 .button_white{
-	width: 45%;
+	width: auto;
 	height: 5%;
 	color:#fff;
 	background: rgba(114,202,191);

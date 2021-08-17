@@ -2,11 +2,10 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
-    school =  models.ForeignKey('School', on_delete = models.CASCADE,null=True, default=0)        
-    name =  models.CharField(max_length=20)
+    school =  models.ForeignKey('School', on_delete = models.CASCADE,null=True, default=0)  
     mbti = models.ForeignKey('MBTI', on_delete = models.CASCADE)
     name =  models.CharField(max_length=20)
-    grade = models.IntegerField( null=True)
+    grade =  models.CharField(max_length=4, default="21학번")
     def __str__(self):
         return self.name
 

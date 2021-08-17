@@ -5,21 +5,23 @@ import os #FileNotFoundError: [Errno 2] No such file or directory: './static/jso
 
 # Create your views here.
 def index(request):
-    data = []
-    full_name = ""
-    module_dir = os.path.dirname(__file__)  # get current directory
-    file_path = os.path.join(module_dir, 'schoolinfo.json')
-    with open(file_path, 'rt', encoding='UTF8') as json_file:
-        json_data = json.load(json_file)
+    # data = []
+    # full_name = ""
+    # module_dir = os.path.dirname(__file__)  # get current directory
+    # file_path = os.path.join(module_dir, 'schoolinfo.json')
+    # with open(file_path, 'rt', encoding='UTF8') as json_file:
+    #     json_data = json.load(json_file)
 
-        # key가 SCHOOL_NM 문자열 가져오기
-        for i in range(433):
-            school_id = str(i)
-            school_name = json_data['dataSearch']['content'][i]['schoolName']
-            campus_name = json_data['dataSearch']['content'][i]['campusName']  
-            full_name = (school_name+" "+campus_name) 
-            school_obj = School(school_id = school_id, school_name=full_name)
-            school_obj.save()
+    #     # key가 SCHOOL_NM 문자열 가져오기
+    #     for i in range(433):
+    #         school_id = str(i)
+    #         school_name = json_data['dataSearch']['content'][i]['schoolName']
+    #         campus_name = json_data['dataSearch']['content'][i]['campusName']
+    #         if campus_name == "본교" :
+    #             campus_name = ""  
+    #         full_name = (school_name+" "+campus_name) 
+    #         school_obj = School(school_id = school_id, school_name=full_name)
+    #         school_obj.save()
 
     return render(request, 'index.html')
 
@@ -45,7 +47,15 @@ def sign_up(request):
     }
     return render(request, 'sign_up.html',context)
 
-def sign_mbti(request):
+def sign_mbti(request, data):
+    if request.method == 'POST': 
+        school = request.POST['mbti']
+        school_id = data['school']
+        user_name = data['user']
+        data = { 
+            'school': school,
+            'users' : users
+        }    
     return render(request, 'sign_mbti.html')
 
 def result(request):
@@ -65,10 +75,10 @@ def create_user(request):
             'school': school,
             'users' : users
         }
-        return my_school_main(request, data)
+        return render(request, 'my_school_main.html', data)
     else:
         school_list = School.objects.all()
-        context = {
+        data = {
             'school_list' : school_list,
         }
-        return render(request, 'select_school.html', context)
+        return render(request, 'select_school.html', data)

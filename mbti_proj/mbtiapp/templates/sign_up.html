@@ -5,7 +5,7 @@
     <!-- <a href="{% url 'index' %}" ><img class="logo" src="{% static '/img/schoolcolor.PNG' %}"></a>     -->
             
 
-    <div class="container"  style="position: absolute; top: 6%; bottom:10%;">
+    <div class="container"  style="position: absolute; top: 6%; bottom:80%;">
         <div class="container justify-content-center purple_bg">
             <div class=" p-3 align-items-center mt-5 p-4">
                 <div class="row p-2 mt-3 mb-3 fs-5">
@@ -18,14 +18,13 @@
                         <select class="mt-2 round_input_box col-8 fs-7 p-2" id="school" name="school" required>
                             <option value="" hidden>학교를 선택해주세요</option>
                             {% for school_obj in school_list %}
-                                <option value="{{school.school}}">{{school_obj.school}}</option>
+                                <option value="{{school_obj.school_id}}">{{school_obj.school_name}}</option>
                             {% endfor %}
                         </select>
-                        <label class="mt-2" style="font-size: xx-small; color: rgba(180,118,248,0.7);" > ex) 한양대학교 에리카캠퍼스</label>
+                        <label class="mt-2" style="font-size: xx-small; color: rgba(180,118,248,0.7);" >학교를 선택해주세요</label>
                     </div>
-                    <div class="mt-4 row">
+                    <!-- <div class="mt-4 row">
                         <h1 for="major" class="col-3 fs-6 mt-3">학과</h1>
-                        <!-- <input type="text" class="mt-2 round_input_box col-8 fs-6 fs-6 p-2" name="major" id="major" required> -->
                         <select class="mt-2 round_input_box col-8 fs-6 fs-7 p-2" id="major" name="major" required>
                             <option value="" hidden>학과를 선택해주세요</option>
                             {% for major_obj in major_list %}
@@ -33,14 +32,22 @@
                             {% endfor %}
                         </select>
                         <label class="mt-2" style="font-size: xx-small; color: rgba(180,118,248,0.7);" > ex) ICT융합학부</label>
+                    </div> -->
+                    <div class="mt-4 mb-2 row">
+                        <h1 for="name" class="col-3 fs-6 mt-3">학번</h1>
+                        <input type="text" class="mt-2 round_input_box col-8 fs-7 p-2" name="grade" id="grade" required>
                     </div>
+                    <label style="font-size: xx-small; color: rgba(180,118,248,0.7);" > ex) 19학번</label>
                     <div class="mt-4 mb-2 row">
                         <h1 for="name" class="col-3 fs-6 mt-3">별명</h1>
                         <input type="text" class="mt-2 round_input_box col-8 fs-7 p-2" name="name" id="name" required>
                     </div>
                     <label style="font-size: xx-small; color: rgba(180,118,248,0.7);" > 별명은 중복 불가능하니, 개성 있게 입력해주세요</label>
-                    <div  class=" mt-5 mb-2">
-                        <button type="submit" class="my_button fs-7" style=" margin-top: 4rem; bottom:30px;">다음</a>
+                    <div  class=" m-1 mb-4">
+                        <h1 hidden>2</h1>
+                    </div>
+                    <div  class=" mt-5 mb-3 p-2">
+                        <button type="submit" class="my_button fs-7" style="">다음</a>
                     </div>
                 </form>
                 
