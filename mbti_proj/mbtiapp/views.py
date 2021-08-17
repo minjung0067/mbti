@@ -8,6 +8,13 @@ from django.db.models import Count
 def index(request):
     data = []
     mbti_list = ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP","ISFP", "INFP", "INTP", "ESTP","ESFP", "ENFP", "ENTP", "ESTJ","ESFJ","ENFJ","ENTJ"]
+
+
+    for j in range(16):
+        mbti = mbti_list[j]
+        mbti_id = str(j)
+        mbti_obj = MBTI(mbti_id = mbti_id , mbti = mbti)
+        mbti_obj.save()    
     full_name = ""
     module_dir = os.path.dirname(__file__)  # get current directory
     file_path = os.path.join(module_dir, 'schoolinfo.json')
@@ -24,9 +31,7 @@ def index(request):
             full_name = (school_name+" "+campus_name) 
             school_obj = School(school_id = school_id, school=full_name)
             school_obj.save()
-        for mbti in mbti_list:
-            mbti_obj = MBTI(mbti = mbti)
-            mbti_obj.save()
+
     return render(request, 'index.html')
 
 def main(request):
@@ -77,7 +82,8 @@ def result(request):
         grade = request.POST['grade']
         name = request.POST['name']
         mbti = request.POST['mbti']
-        mbti_obj = MBTI.objects.filter(mbti = mbti)
+        mbti_obj = MBTI.objects.filter( mbti_id = mbti)
+        mbti_obj = mbti_obj[0]
         user_obj = User(school = school_obj, grade = grade, name = name, mbti=mbti_obj)
         user_obj.save()
     return render(request, 'result.html')

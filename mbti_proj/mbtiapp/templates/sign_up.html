@@ -170,7 +170,7 @@
                     </div>
                 </div>
                 <div class="row mbti_box"></div>
-                <input id="mbti_input" type="text" class="p-0" name="mbti" id="mbti" required hidden>
+                <input id="mbti_input" type="text" class="p-0" name="mbti" required hidden>
                 <button class=" mt-5 mb-2 p-2 purple-background" type="submit"  >결과보기</button>
             </div>
         </form>
@@ -208,9 +208,9 @@
     var clicked = 0;
 
 
-    function card_click(card_num) {
+    function card_click(num) {
         var user_form = document.getElementById('user_form');
-        var card_num = document.getElementById(card_num);
+        var card_num = document.getElementById(num);
         var mbti_input = document.getElementById('mbti_input');
         if (card_num.classList[2] === "clicked") {
             card_num.classList.remove("clicked");
@@ -220,19 +220,9 @@
             }
 
             card_num.classList.add("clicked");
-            clicked = card_num;
-            user_form.mbti.value = card_num;
-            alert(user_form.mbti.value);
-        }
-    }
-
-    function submit_form(){
-        var user_form = document.getElementById('user_form');
-        if(user_form.mbti.value == ""){
-            alert("MBTI를 선택해야 결과를 볼 수 있어요");
-        }
-        else{
-            pass
+            clicked = num;
+            mbti_input.value = num;
+            console.log(mbti_input.value);
         }
     }
 

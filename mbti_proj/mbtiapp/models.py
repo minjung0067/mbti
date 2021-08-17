@@ -4,14 +4,15 @@ from django.db import models
 class User(models.Model):
     user_id = models.BigAutoField(help_text="school ID", primary_key=True)
     school =  models.ForeignKey('School', on_delete = models.CASCADE, null= False, default=1)  
-    mbti = models.ForeignKey('MBTI', on_delete = models.CASCADE, default=1)
+    mbti = models.ForeignKey('MBTI', on_delete = models.CASCADE, default=1, null=False)
     name =  models.CharField(max_length=20)
     grade =  models.CharField(max_length=4, default="21학번")
     def __str__(self):
         return self.name
 
 class MBTI(models.Model):
-    mbti =  models.CharField(max_length=10, primary_key=True)
+    mbti_id = models.BigAutoField(help_text="mbti ID", primary_key=True)
+    mbti =  models.CharField(max_length=10)
 
     def __str__(self):
         return self.mbti
