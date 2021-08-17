@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import User, MBTI, School
 import json
 import os #FileNotFoundError: [Errno 2] No such file or directory: './static/json/schoolinfo.json'
@@ -44,12 +44,14 @@ def my_school_main(request, data):
     # 계산하는 부분 
     return render(request, 'my_school_main.html', data)
 
-def sign_up(request):
-    school_list = School.objects.all()
-    context = {
-        'school_list' : school_list,
-    }
-    return render(request, 'sign_up.html',context)
+def sign_up(request,school_id):
+    if school_id is not None:
+        school_obj = get_object_or_404(School, school_id=school_id)
+        context = {
+            'school_obj':school_obj
+        }
+        return render(request, 'sign_up.html',context)
+    return redirect(request, 'sign_up.html')
 
 def sign_mbti(request):
     if request.method == 'POST': 
@@ -68,6 +70,16 @@ def sign_mbti(request):
         return render(request, 'sign_mbti.html')
 
 def result(request):
+    if request.method == 'POST': 
+        school = request.POST['school']
+        school_obj = School.objects.filter(school_id = school)
+        school_obj = school_obj[0]
+        grade = request.POST['grade']
+        name = request.POST['name']
+        mbti = request.POST['mbti']
+        mbti_obj = MBTI.objects.filter(mbti = mbti)
+        user_obj = User(school = school_obj, grade = grade, name = name, mbti=mbti_obj)
+        user_obj.save()
     return render(request, 'result.html')
 
 def about_mbti(request):
@@ -79,7 +91,8 @@ def search_user(request):
 def create_user(request):
     mbti_list = {}
     if request.method == 'POST': 
-        school_id = request.POST['school']
+        if request.POST['school']:
+            school_id = request.POST['school']
         school_obj = School.objects.get(school_id = school_id)
         users = User.objects.filter(school_id = school_id)
         if users:
@@ -97,7 +110,7 @@ def create_user(request):
             'mbti_list' : mbti_list
         }
 
-        return render(request, 'my_school_main.html', data)
+        return my_school_main(request, data)
     else:
         school_list = School.objects.all()
         data = {

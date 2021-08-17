@@ -17,10 +17,7 @@
                         <h1 for="school" class="col-3 fs-6 mt-3">학교</h1>
                         <!-- <input type="text" class="mt-2 round_input_box col-8 fs-6 p-2" name="school" id="school" required> -->
                         <select class="mt-2 round_input_box col-8 fs-7 p-2" id="school" name="school" required>
-                            <option value="" hidden>학교를 선택해주세요</option>
-                            {% for school_obj in school_list %}
-                                <option value="{{school_obj.school_id}}">{{school_obj.school}}</option>
-                            {% endfor %}
+                            <option value="{{school_obj.school_id}}" selected>{{school_obj.school}}</option>
                         </select>
                         <label class="mt-2" style="font-size: xx-small; color: rgba(180,118,248,0.7);" >학교를 선택해주세요</label>
                     </div>
@@ -173,8 +170,8 @@
                     </div>
                 </div>
                 <div class="row mbti_box"></div>
-                
-                <button class=" mt-5 mb-2 p-2 purple-background" type="submit" onclick="submit_form()" ><input id="mbti_input" type="text" class="p-0" name="mbti" id="mbti" required hidden>결과 보기</button>    
+                <input id="mbti_input" type="text" class="p-0" name="mbti" id="mbti" required hidden>
+                <button class=" mt-5 mb-2 p-2 purple-background" type="submit"  >결과보기</button>
             </div>
         </form>
 
@@ -214,7 +211,7 @@
     function card_click(card_num) {
         var user_form = document.getElementById('user_form');
         var card_num = document.getElementById(card_num);
-        var mbti_input = document.getElementById(mbti_input);
+        var mbti_input = document.getElementById('mbti_input');
         if (card_num.classList[2] === "clicked") {
             card_num.classList.remove("clicked");
         } else {
@@ -224,7 +221,8 @@
 
             card_num.classList.add("clicked");
             clicked = card_num;
-            user_form.mbti.value = clicked;
+            user_form.mbti.value = card_num;
+            alert(user_form.mbti.value);
         }
     }
 
@@ -234,7 +232,7 @@
             alert("MBTI를 선택해야 결과를 볼 수 있어요");
         }
         else{
-            location.href='{% url 'result' %}';
+            pass
         }
     }
 
