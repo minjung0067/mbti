@@ -4,6 +4,7 @@ import json
 import os #FileNotFoundError: [Errno 2] No such file or directory: './static/json/schoolinfo.json'
 from django.db.models import Count
 
+
 # Create your views here.
 def index(request):
     data = []
@@ -97,6 +98,9 @@ def search_user(request):
     return redirect
 
 def create_user(request):
+    mbti = ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP","ISFP", "INFP", "INTP", "ESTP","ESFP", "ENFP", "ENTP", "ESTJ","ESFJ","ENFJ","ENTJ"]
+    mbti_cnt = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    this_mbti = 0
     mbti_list = {}
     if request.method == 'POST': 
         if request.POST['school']:
@@ -108,14 +112,23 @@ def create_user(request):
                 # this_user= User.objects.get(school_id = school_id)
                 
                 mbti_list['INTJ'] = 1 #i는 user 이름이 들어감
-                mbti_count = users.values('mbti_id').values() #[{'mbti_id': 1}, {'mbti_id': 1}]
-        mbti_count = users.values('mbti_id') #.annotate(num_mbti=Count('mbti')).order_by('num_mbti')
-        
+                mbti_count = users.values('mbti_id') #[{'mbti_id': 1}, {'mbti_id': 1}]
+            
+            for mbti_set in mbti_count:
+                this_mbti = mbti_set['mbti_id']
+                mbti_cnt[this_mbti] += 1
+
+            for i in range(16):
+                mbti_list[mbti[i]]=mbti_cnt[i]
+       # mbti_count = users.values('mbti_id') #.annotate(num_mbti=Count('mbti')).order_by('num_mbti')
+            mbti_list = sorted(mbti_list.items(), reverse=True, key=lambda item: item[1]) 
+            #dictionary 내림차순 정렬 - top 5 뽑아내려고
         data = { 
             'school_obj':school_obj,
             'users' : users,
-            'mbti_count' : mbti_count,
-            'mbti_list' : mbti_list
+            'mbti_count' : mbti_count, #<QuerySet [{'mbti_id': 7}, {'mbti_id': 4}]>
+            'mbti_list' : mbti_list, #{'INTJ': 0, 'ISTJ': 0, 'ISFJ': 0, 'INFJ': 0, 'ISTP': 1, 'ISFP': 0, 'INFP': 0, 'INTP': 1, 'ESTP': 0, 'ESFP': 0, 'ENFP': 0, 'ENTP': 0, 'ESTJ': 0, 'ESFJ': 0, 'ENFJ': 0, 'ENTJ': 0}
+            'mbti_cnt' : mbti_cnt, #[0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
         }
 
         return my_school_main(request, data)
