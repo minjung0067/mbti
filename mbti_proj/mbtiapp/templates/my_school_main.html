@@ -8,7 +8,8 @@
     <h2 class="mt-0 p-1 GmarketSansBold fs-3 mint-color">{{school_obj.school}}</h2>
     <h2 class="mt-0 p-0 GmarketSansBold fs-3 mint-color"> MBTI top 5</h2>
     
-    <!-- <p> {{mbti_count}}{{mbti_list}}</p> -->
+        <p id="mbti" > {{mbti}}</p>
+        <p id="mbti_list" >{{mbti_list}}</p> 
     <!-- <p> {{mbti_cnt}}</p> -->
     <div class="container ps-5 pe-5">
         <canvas id="doughnut-chart" width="100" height="100"></canvas>
@@ -62,15 +63,30 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script>
+    var mbti_dict={}
+    var mbti_cnt = []
+    var mbti_name = []
+    // var mbti_name = document.getElementById("mbti").innerText;
+    // console.log(mbti_name);
+    mbti_dict = document.getElementById("mbti_list").innerHTML; 
+    Object.entries(mbti_dict).forEach(([key, value]) => {
+    console.log(key, value);
+});
+    console.log(mbti_dict);
+    // var mbti_name = mbti_list.keys()
+
+    mbti_name = Object.keys(mbti_dict)
+    console.log(mbti_name);
+
+
     new Chart(document.getElementById("doughnut-chart"), {
         type: 'doughnut',
         data: {
-        labels: ["", "Asia", "Europe", "Latin America", "North America"],
+        labels: mbti_name,
         datasets: [
             {
-            label: "Person",
             backgroundColor: ["#6ba1e1", "#e9b76c","#cf80bd","#e27356","#68b3ca"],
-            data: [2478,5267,734,784,433]
+            data: mbti_cnt,
             }
         ]
         },

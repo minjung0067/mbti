@@ -119,15 +119,19 @@ def create_user(request):
                 mbti_cnt[this_mbti] += 1
 
             for i in range(16):
-                mbti_list[mbti[i]]=mbti_cnt[i]
+                mbti_list[str(mbti[i])]=mbti_cnt[i]
+            
+
        # mbti_count = users.values('mbti_id') #.annotate(num_mbti=Count('mbti')).order_by('num_mbti')
-            mbti_list = sorted(mbti_list.items(), reverse=True, key=lambda item: item[1]) 
+            # mbti_list = sorted(mbti_list.items(), reverse=True, key=lambda item: item[1]) 
+
             #dictionary 내림차순 정렬 - top 5 뽑아내려고
         data = { 
             'school_obj':school_obj,
             'users' : users,
+            'mbti' : mbti,
             'mbti_count' : mbti_count, #<QuerySet [{'mbti_id': 7}, {'mbti_id': 4}]>
-            'mbti_list' : mbti_list, #{'INTJ': 0, 'ISTJ': 0, 'ISFJ': 0, 'INFJ': 0, 'ISTP': 1, 'ISFP': 0, 'INFP': 0, 'INTP': 1, 'ESTP': 0, 'ESFP': 0, 'ENFP': 0, 'ENTP': 0, 'ESTJ': 0, 'ESFJ': 0, 'ENFJ': 0, 'ENTJ': 0}
+            'mbti_list' : mbti_list, #정렬해서 보냄 !! -> 얘를 {'INTJ': 0, 'ISTJ': 0, 'ISFJ': 0, 'INFJ': 0, 'ISTP': 1, 'ISFP': 0, 'INFP': 0, 'INTP': 1, 'ESTP': 0, 'ESFP': 0, 'ENFP': 0, 'ENTP': 0, 'ESTJ': 0, 'ESFJ': 0, 'ENFJ': 0, 'ENTJ': 0}
             'mbti_cnt' : mbti_cnt, #[0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
         }
 
