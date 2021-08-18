@@ -68,14 +68,17 @@
     var mbti_name = []
     // var mbti_name = document.getElementById("mbti").innerText;
     // console.log(mbti_name);
-    mbti_dict = document.getElementById("mbti_list").innerHTML; 
-    Object.entries(mbti_dict).forEach(([key, value]) => {
-    console.log(key, value);
-});
-    console.log(mbti_dict);
+    mbti_dict = document.getElementById("mbti_list").textContent;
+    {{% for key, value in mbti_list.items %}}
+        console.log({{key}});
+    {{% endfor %}} 
+    // Object.entries(mbti_dict).forEach(([key, value]) => {
+    // console.log(key, value);
+// });
+    console.log(mbti_dict[0]);
     // var mbti_name = mbti_list.keys()
 
-    mbti_name = Object.keys(mbti_dict)
+    mbti_name = Object.values(mbti_dict)
     console.log(mbti_name);
 
 
