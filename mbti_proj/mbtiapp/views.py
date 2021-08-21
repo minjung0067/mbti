@@ -105,25 +105,32 @@ def create_user(request):
     if request.method == 'POST': 
         if request.POST['school']:
             school_id = request.POST['school']
-        school_obj = School.objects.get(school_id = school_id)
-        users = User.objects.filter(school_id = school_id)
+        
+        try:
+            school_obj = School.objects.get(school_id = school_id)
+            users = User.objects.filter(school_id = school_id)
+        except:
+            pass
         if users:
             for i in users:
                 # this_user= User.objects.get(school_id = school_id)
                 
-                mbti_list['INTJ'] = 1 #i는 user 이름이 들어감
+                # mbti_list['INTJ'] = 1 #i는 user 이름이 들어감
                 mbti_count = users.values('mbti_id') #[{'mbti_id': 1}, {'mbti_id': 1}]
             
-            for mbti_set in mbti_count:
+            for mbti_set in mbti_count: 
                 this_mbti = mbti_set['mbti_id']
                 mbti_cnt[this_mbti] += 1
 
+
             for i in range(16):
-                mbti_list[str(mbti[i])]=mbti_cnt[i]
+                cnt = mbti_cnt[i]
+                mbti_list[str(mbti[i])] = cnt
+                mbti_list[str(mbti[i])] =  ((cnt / len(users)) * 100)
             
 
-       # mbti_count = users.values('mbti_id') #.annotate(num_mbti=Count('mbti')).order_by('num_mbti')
-            # mbti_list = sorted(mbti_list.items(), reverse=True, key=lambda item: item[1]) 
+        mbti_count = users.values('mbti_id') #.annotate(num_mbti=Count('mbti')).order_by('num_mbti')
+        mbti_list = sorted(mbti_list.items(), reverse=True, key=lambda item: item[1]) 
 
             #dictionary 내림차순 정렬 - top 5 뽑아내려고
         data = { 
