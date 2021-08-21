@@ -143,10 +143,11 @@ def result(request):
         name = request.POST['name']
         mbti = request.POST['mbti']
         try:
-            user_obj = get_object_or_404(Service_User,name = name)
+            user_obj = Service_User.objectes.get(name = name)
+
+        except:
             mbti_obj = MBTI.objects.filter( mbti_id = mbti)
             mbti_obj = mbti_obj[0]
-        except:
             user_obj = Service_User(school = school_obj, grade = grade, name = name, mbti=mbti_obj)
             user_obj.save()
         return create_user(request)
