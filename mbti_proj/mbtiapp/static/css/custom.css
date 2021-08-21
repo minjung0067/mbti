@@ -302,7 +302,7 @@ input{
 
         .loading {
             border: 2px solid transparent;
-            border-color: transparent rgba(180,118,248); transparent rgba(180,118,248);;
+            border-color: transparent rgba(180,118,248);
             -moz-animation: rotate-loading 1.5s linear 0s infinite normal;
             -moz-transform-origin: 50% 50%;
             -o-animation: rotate-loading 1.5s linear 0s infinite normal;
@@ -342,7 +342,3 @@ input{
             top: 0;
             width: 100px;
         }
-
-
-
-Resources
