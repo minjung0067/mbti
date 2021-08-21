@@ -83,7 +83,7 @@ def create_user(request):
             for i in range(16):
                 cnt = mbti_list[mbti[i]]
                 mbti_list[str(mbti[i])] = cnt
-                mbti_list[str(mbti[i])] =  ((cnt / len(users)) * 100)
+                mbti_list[str(mbti[i])] =  (round((cnt / len(users)),2) * 100)
             
 
         mbti_count = users.values('mbti_id') #.annotate(num_mbti=Count('mbti')).order_by('num_mbti')
