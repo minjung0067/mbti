@@ -4,36 +4,36 @@
 
 <!-- {% include "partials/top_nav.html" %} -->
 
-<div class="container p-3 ">
+<div class="container pt-3 mb-0">
     <h2 class="mt-0 p-1 GmarketSansBold fs-3 mint-color">{{school_obj.school}}</h2>
     <h2 class="mt-0 p-0 GmarketSansBold fs-3 mint-color"> MBTI 순위</h2>
     
-        <!-- <p id="mbti" > {{mbti}}</p> -->
-        <!-- <p id="mbti_list" >{{mbti_list}}</p>  -->
     <!-- <p> {{mbti_cnt}}</p> -->
     <!-- <div class="container ps-5 pe-5"> -->
         <!-- <canvas id="doughnut-chart" width="100" height="100"></canvas> -->
         <!-- <img width="30%" src="{% static '/img/everyone.png' %}">    -->
     </div>
     
-    <div class="top_5 p-2" >
-        {% for mbti_rate in mbti_list %}
+    <div class="p-2" >
+        {% for key, value in mbti_list.items %}
         <div class="rank_box">
             <div class="row m-1 purple-color">
                 <div class="col-4">
-                    <p class="fs-6"></p>
+                    <p class="fs-7 GmarketSansLight">{{forloop.counter}}위</p>
                 </div>
                 <div class="col-4">
-                    <!-- <p class="fs-6 GmarketSansBold">{{mbti_rate}}</p> -->
+                    <p class="fs-7 GmarketSansBold">{{key}}</p>
                 </div>
                 <div class="col-4">
-                    <p class="fs-6">0.0%</p>
+                    <p class="fs-7">{{value}}%</p>
                 </div>
             </div>
         </div>
 
     {% endfor %}
     </div>
+    <p class="fs-10 p-1" id="mbti" > 현재 {{users}}명 참여 중</p>
+
     <hr style="opacity: 0.1;">
 
 
@@ -54,7 +54,7 @@
 
 <div class="row ms-0 me-0" style=" width: 100%; position: fixed; bottom: 40px; top: auto;">
     <a class="col-3"></a>
-    <a class="col-3 pt-1 fs-7 my_button"  href='{% url 'main' %}'>돌아가기</a>
+    <a class="col-3 pt-1 fs-7 my_button"  href='{% url 'index' %}'>돌아가기</a>
     <a class="ms-1 col-3 pt-1 fs-7  my_button "  href='{% url 'main' %}'>공유하기</a>
 </div>
 <button class="col-4"  style="position: fixed; bottom: 60px; top: auto;" onclick=location.href='{% url 'sign_up' school_id=school_obj.school_id %}'>참여하기</button>
@@ -63,43 +63,41 @@
 </body>
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> -->
-<script>
+<script type="text/javascript">
 
-    console.log(typeof({{mbti_list}}[0]));
 
     var mbti_dict={}
     var mbti_cnt = []
     var mbti_name = []
-    // var mbti_name = document.getElementById("mbti").innerText;
-    // console.log(mbti_name);
+    // var mbti_list = "{{mbti_list}}"
+
 
     // Object.entries(mbti_dict).forEach(([key, value]) => {
     // console.log(key, value);
 // });
-    console.log(mbti_dict[0]);
     // var mbti_name = mbti_list.keys()
 
-    mbti_name = Object.values(mbti_dict)
-    console.log(mbti_name);
+    // mbti_name = Object.values(mbti_dict)
+    // console.log(mbti_name);
 
 
-    new Chart(document.getElementById("doughnut-chart"), {
-        type: 'doughnut',
-        data: {
-        labels: mbti_name,
-        datasets: [
-            {
-            backgroundColor: ["#6ba1e1", "#e9b76c","#cf80bd","#e27356","#68b3ca"],
-            data: mbti_cnt,
-            }
-        ]
-        },
-        options: {
-        title: {
-            display: false,
-            text: 'Predicted world population (millions) in 2050'
-        }
-        }
-    });
+    // new Chart(document.getElementById("doughnut-chart"), {
+    //     type: 'doughnut',
+    //     data: {
+    //     labels: mbti_name,
+    //     datasets: [
+    //         {
+    //         backgroundColor: ["#6ba1e1", "#e9b76c","#cf80bd","#e27356","#68b3ca"],
+    //         data: mbti_cnt,
+    //         }
+    //     ]
+    //     },
+    //     options: {
+    //     title: {
+    //         display: false,
+    //         text: 'Predicted world population (millions) in 2050'
+    //     }
+    //     }
+    // });
 </script>
 </html>
