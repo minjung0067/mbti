@@ -11,11 +11,11 @@ def index(request):
     mbti_list = ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP","ISFP", "INFP", "INTP", "ESTP","ESFP", "ENFP", "ENTP", "ESTJ","ESFJ","ENFJ","ENTJ"]
 
 
-    # for j in range(16):
-    #     mbti = mbti_list[j]
-    #     mbti_id = str(j)
-    #     mbti_obj = MBTI(mbti_id = mbti_id , mbti = mbti)
-    #     mbti_obj.save()   
+    for j in range(16):
+        mbti = mbti_list[j]
+        mbti_id = str(j)
+        mbti_obj = MBTI(mbti_id = mbti_id , mbti = mbti)
+        mbti_obj.save()   
 
     full_name = ""
 
@@ -146,10 +146,12 @@ def result(request):
             user_obj = Service_User.objectes.get(name = name)
 
         except:
-            mbti_obj = MBTI.objects.filter( mbti_id = mbti)
-            mbti_obj = mbti_obj[0]
-            user_obj = Service_User(school = school_obj, grade = grade, name = name, mbti=mbti_obj)
-            user_obj.save()
+            try:
+                mbti_obj = MBTI.objects.get( mbti_id = mbti)
+                mbti_obj = mbti_obj[0]
+            except:
+                user_obj = Service_User(school = school_obj, grade = grade, name = name, mbti=mbti_obj)
+                user_obj.save()
         return create_user(request)
     else:
         return redirect
