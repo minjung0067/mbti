@@ -54,10 +54,10 @@
 
 <div class="row ms-0 me-0" style=" width: 100%; position: fixed; bottom: 40px; top: auto;">
     <a class="col-3"></a>
-    <a class="col-3 pt-1 fs-7 my_button"  href='{% url 'index' %}'>돌아가기</a>
-    <a class="ms-1 col-3 pt-1 fs-7  my_button "  href='{% url 'main' %}'>공유하기</a>
+    <a class="col-3 pt-1 me-1 fs-7 my_button"  href='{% url 'index' %}'>돌아가기</a>
+    <a class="col-3  pt-1 ms-1 fs-7 my_button" href='{% url 'sign_up' school_id=school_obj.school_id %}'>참여하기</a>
+    
 </div>
-<button class="col-4"  style="position: fixed; bottom: 60px; top: auto;" onclick=location.href='{% url 'sign_up' school_id=school_obj.school_id %}'>참여하기</button>
 
 
 </body>
