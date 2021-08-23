@@ -45,6 +45,7 @@
                         <h1 hidden>2</h1>
                     </div>
                     <div  class=" mt-5 mb-3 p-2">
+                        <button class="my_button fs-7" onclick=location.href="{% url 'select_school' %}">돌아가기</a>
                         <button class="my_button fs-7" onclick="show_mbti()">다음</a>
                     </div>
                 
@@ -171,6 +172,7 @@
                 </div>
                 <div class="row mbti_box"></div>
                 <input id="mbti_input" type="text" class="p-0" name="mbti" required hidden>
+                <button class="my_button fs-7" onclick=reset_btn() %}">이전</a>
                 <button class=" mt-5 mb-2 p-2 purple-background" type="submit"  >결과보기</button>
             </div>
         </form>
@@ -204,6 +206,13 @@
             container1.classList.add('hidden');
             container2.classList.remove('hidden');            
         }
+    }
+
+    function reset_btn(){
+        var container1 = document.getElementById('first_container');
+        var container2 = document.getElementById('second_container');
+        container2.classList.add('hidden');
+        container1.classList.remove('hidden');    
     }
 
     var clicked = 0;
